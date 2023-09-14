@@ -2,13 +2,14 @@ import './App.css';
 
 import Row from './components/Row/Row';
 import Banner from './components/Banner/Banner';
+import Nav from './components/Nav/Nav';
 
 import requests from './settings/requests';
 
 function App() {
   return (
     <div className='App'>
-      {/* {Navbar} */}
+      <Nav/>
 
       <Banner/>
 

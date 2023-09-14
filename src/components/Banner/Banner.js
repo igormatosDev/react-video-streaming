@@ -4,7 +4,7 @@ import requests from "../../settings/requests";
 import "./Banner.css";
 
 const Banner = () => {
-  const [movie, setMovie] = useState([]);
+const [movie, setMovie] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -19,32 +19,34 @@ const Banner = () => {
     fetchData();
   }, []);
 
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  }
+
   return (
     <header
       className="banner"
       style={{
         backgroundSize: "cover",
         backgroundImage: `url('https://image.tmdb.org/t/p/original/${movie?.backdrop_path}')`,
-        backgroundPosition: "center center",
+        backgroundPosition: "top center",
       }}
     >
       <div className="banner__contents">
-        <h1 class="banner__title">
+        <h1 className="banner__title">
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
 
         <div className="banner__buttons">
           <button className="banner__button">Play</button>
           <button className="banner__button">My list</button>
-
         </div>
 
-        <h2 className="banner_description">
-          {movie?.overview}
-        </h2>
+        <h2 className="banner__description">{truncate(movie?.overview, 150)}</h2>
       </div>
-      {/* div > 2 buttons */}
-      {/* description */}
+
+
+      <div className="banner__fadeBottom"></div>
     </header>
   );
 };
